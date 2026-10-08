@@ -100,9 +100,9 @@ For every `/login` request the page displays two things side by side:
 
 Real examples from running the demo, first a GET request, then a POST request:
 
-![GET result page showing the password in the URL and in the logged request line](images/GETrequest.png)
+![GET result page showing the password in the URL and in the logged request line](GETrequest.png)
 
-![POST result page showing the password in the request body but not in the logged request line](images/POSTrequest.png)
+![POST result page showing the password in the request body but not in the logged request line](POSTrequest.png)
 
 ### Access log format
 
@@ -147,7 +147,7 @@ If the log contains POST requests, the report ends with a reminder that their bo
 
 `sample_access.log` is a fabricated log. Its IP addresses come from the reserved documentation ranges (`192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`).
 
-![Analyzer output on sample_access.log showing 8 findings](images/example2.png)
+![Analyzer output on sample_access.log showing 8 findings](example2.png)
 
 ## Defender takeaways
 
