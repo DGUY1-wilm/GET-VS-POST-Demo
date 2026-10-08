@@ -123,9 +123,7 @@ Demo running at http://127.0.0.1:8000  (press Ctrl+C to stop)
 2. Click **Log in with GET**.
 3. **Look at the address bar at the top of your browser.** You should see something like:
 
-```
-127.0.0.1:8000/login?username=demo&password=demo123
-```
+![The GET result page, with the password visible in the browser's address bar](images/GETrequest.png)
 
 Your password is sitting in the web address, in plain view. Anyone looking over your shoulder, or any system that records web addresses, would capture it.
 
@@ -140,9 +138,7 @@ The page also shows the **raw request** your browser sent, and the line the serv
 3. Click **Log in with POST**.
 4. Look at the address bar again. It now just says:
 
-```
-127.0.0.1:8000/login
-```
+![The POST result page, with the address bar showing only /login](images/POSTrequest.png)
 
 The password is **not** in the address. It traveled hidden inside the request instead. The page shows you where: in the "request body" part of the raw request.
 
@@ -188,9 +184,7 @@ python log_analyzer.py access.log
 
 You'll see a finding for each time you used the GET form:
 
-```
-HIGH   127.0.0.1   Sensitive data in URL: password
-```
+![Analyzer output on a personal access log, flagging the password in the URL](images/example1.png)
 
 That's the scanner noticing a password in a web address.
 
@@ -205,6 +199,7 @@ Your own log is pretty boring. Try the included **practice log**, which contains
 ```
 python log_analyzer.py sample_access.log
 ```
+![Analyzer output on sample_access.log showing 8 findings](images/example2.png)
 
 You should see 8 findings, including:
 
