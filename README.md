@@ -98,6 +98,12 @@ For every `/login` request the page displays two things side by side:
 - **The raw request the server received:** the request line, the headers, and, for POST, the body. This is *reconstructed* from what Python's HTTP parser exposes (`requestline` and the parsed headers), so header order and casing reflect the parser, not a packet capture.
 - **What the access log will record:** just the request line. For a GET it contains the password; for a POST it does not.
 
+Real examples from running the demo, first a GET request, then a POST request:
+
+![GET result page showing the password in the URL and in the logged request line](images/GETrequest.png)
+
+![POST result page showing the password in the request body but not in the logged request line](images/POSTrequest.png)
+
 ### Access log format
 
 Each request is appended to `access.log` (created next to the script) in a Common Log Format style:
@@ -141,32 +147,7 @@ If the log contains POST requests, the report ends with a reminder that their bo
 
 `sample_access.log` is a fabricated log. Its IP addresses come from the reserved documentation ranges (`192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`).
 
-```
-Scanned 21 requests (13 GET, 8 POST, 0 other); skipped 0 unreadable lines.
-
-Line  Severity Source IP        Finding
-------------------------------------------------------------------------------
-3     HIGH     198.51.100.10    Sensitive data in URL: password
-      request: /login?username=demo&password=demo123
-11    MEDIUM   203.0.113.45     Possible brute force: 7 failed logins (5+ within 60s)
-      request: (multiple login requests)
-14    HIGH     203.0.113.45     SQL injection pattern
-      request: /products?id=1'%20OR%20'1'='1
-15    HIGH     203.0.113.45     SQL injection pattern
-      request: /search?q=1%20UNION%20SELECT%20username,password%20FROM%20users
-16    HIGH     198.51.100.99    Cross-site scripting (XSS) pattern
-      request: /search?q=%3Cscript%3Ealert(1)%3C/script%3E
-18    HIGH     203.0.113.200    Path traversal pattern
-      request: /download?file=../../../../etc/passwd
-19    HIGH     203.0.113.200    Command injection pattern
-      request: /ping?host=8.8.8.8;cat%20/etc/shadow
-20    HIGH     192.0.2.31       Sensitive data in URL: token
-      request: /api/data?token=abc123secret
-
-Total findings: 8
-
-Visibility note: 8 POST request(s) in this log. Access logs do not record POST bodies, so any payload inside them cannot be inspected here (you would need WAF, application, or proxy logs).
-```
+![Analyzer output on sample_access.log showing 8 findings](images/example2.png)
 
 ## Defender takeaways
 
