@@ -20,7 +20,7 @@ New to the command line? See [GETTING_STARTED.md](GETTING_STARTED.md) for a walk
 Requires Python 3.8+. There are no third-party dependencies.
 
 ```bash
-git clone https://github.com/<your-username>/get-vs-post-demo.git
+git clone https://github.com/<DGUY1-wilm>/get-vs-post-demo.git
 cd get-vs-post-demo
 python demo_server.py            # then open http://127.0.0.1:8000
 python log_analyzer.py access.log
