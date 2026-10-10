@@ -21,7 +21,7 @@ Requires Python 3.8+. There are no third-party dependencies.
 
 ```bash
 git clone https://github.com/<DGUY1-wilm>/get-vs-post-demo.git
-cd get-vs-post-demo
+cd GET-VS-POST-Demo
 python demo_server.py            # then open http://127.0.0.1:8000
 python log_analyzer.py access.log
 python log_analyzer.py sample_access.log
